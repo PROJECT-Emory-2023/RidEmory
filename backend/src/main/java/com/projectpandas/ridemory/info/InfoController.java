@@ -32,6 +32,6 @@ public class InfoController {
 
     @GetMapping("/trendingLocation")
     public List<SortRidesByLocation> getTrendingLocation() {
-        return service.getTop3Location();
+        return service.getTrendingLocation();
     }
 }

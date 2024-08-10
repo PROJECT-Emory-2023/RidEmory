@@ -1,4 +1,4 @@
-package com.projectpandas.ridemory.user;
+package com.projectpandas.ridemory.util.user;
 
 import java.util.ArrayList;
 import java.util.List;

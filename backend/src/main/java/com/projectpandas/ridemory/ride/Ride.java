@@ -14,9 +14,9 @@ import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.projectpandas.ridemory.user.User;
 import com.projectpandas.ridemory.util.ObjectIdListSerializer;
 import com.projectpandas.ridemory.util.ObjectIdSerializer;
+import com.projectpandas.ridemory.util.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
