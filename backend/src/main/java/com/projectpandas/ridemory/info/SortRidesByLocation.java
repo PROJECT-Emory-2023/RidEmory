@@ -6,7 +6,6 @@ import lombok.Data;
 
 @Data
 public class SortRidesByLocation {
-    
     private GeoJsonPoint Destination;
 
     private int count;

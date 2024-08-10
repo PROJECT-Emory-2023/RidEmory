@@ -109,8 +109,7 @@ public class InfoService {
     public List<SortRidesByLocation> getTrendingLocation() {
         // defining pipelines
         Aggregation agg = Aggregation.newAggregation(Aggregation.sortByCount("to"),
-                                                     Aggregation.project("count").and("_id").as("Destination"), 
-                                                     Aggregation.limit(3));
+                Aggregation.project("count").and("_id").as("Destination"), Aggregation.limit(3));
 
         AggregationResults<SortRidesByLocation> results = mongoTemplate.aggregate(agg, "rides",
                 SortRidesByLocation.class);
