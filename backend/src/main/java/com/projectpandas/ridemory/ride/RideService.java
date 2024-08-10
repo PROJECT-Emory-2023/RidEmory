@@ -10,10 +10,11 @@ import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.Metrics;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.stereotype.Service;
+
+import com.projectpandas.ridemory.util.user.User;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.projectpandas.ridemory.user.User;
 
 @Service
 public class RideService {

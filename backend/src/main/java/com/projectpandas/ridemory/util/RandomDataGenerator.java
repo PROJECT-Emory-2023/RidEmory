@@ -3,7 +3,7 @@ package com.projectpandas.ridemory.util;
 import com.projectpandas.ridemory.ride.Location;
 import com.projectpandas.ridemory.ride.Ride;
 import com.projectpandas.ridemory.ride.RideRepository;
-import com.projectpandas.ridemory.user.User;
+import com.projectpandas.ridemory.util.user.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;

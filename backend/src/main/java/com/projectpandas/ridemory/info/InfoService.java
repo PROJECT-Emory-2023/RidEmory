@@ -7,6 +7,14 @@ import com.projectpandas.ridemory.ride.Ride;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
+import org.springframework.data.mongodb.core.aggregation.AggregationOperation;
+import org.springframework.data.mongodb.core.aggregation.AggregationOperationContext;
+
 import org.springframework.stereotype.Service;
 
 import java.net.URI;
@@ -14,6 +22,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -25,6 +34,10 @@ public class InfoService {
     // DONE:
     // ATL TSA wait times
     public final HttpClient client;
+
+    @Autowired
+    private MongoTemplate mongoTemplate;
+
     public static final String TSAWaitTimeAPI = "https://www.atl.com/times/";
     public static final String[] checkpoints = {"MAIN", "NORTH", "LOWER NORTH", "SOUTH", "INT'L"};
     private static final String GoogleMapAPIKEY = APIKeys.googleAPIKey;
@@ -91,5 +104,15 @@ public class InfoService {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public List<SortRidesByLocation> getTrendingLocation() {
+        // defining pipelines
+        Aggregation agg = Aggregation.newAggregation(Aggregation.sortByCount("to"),
+                Aggregation.project("count").and("_id").as("Destination"), Aggregation.limit(3));
+
+        AggregationResults<SortRidesByLocation> results = mongoTemplate.aggregate(agg, "rides",
+                SortRidesByLocation.class);
+        return results.getMappedResults();
     }
 }

@@ -1,4 +1,4 @@
-package com.projectpandas.ridemory.user;
+package com.projectpandas.ridemory.util.user;
 
 import org.bson.types.ObjectId;
 import org.slf4j.Logger;

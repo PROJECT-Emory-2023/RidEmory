@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.projectpandas.ridemory.ride.Ride;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -27,5 +28,10 @@ public class InfoController {
     public String getTripDuration(@RequestBody Ride ride) {
         return service.getTrafficTimeEstimate(ride);
         // return service.getTrafficaTimeEstimate(ride);
+    }
+
+    @GetMapping("/trendingLocation")
+    public List<SortRidesByLocation> getTrendingLocation() {
+        return service.getTrendingLocation();
     }
 }
